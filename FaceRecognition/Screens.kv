@@ -1,0 +1,153 @@
+WindowManager:
+    Loginscreen:
+    Regscreen:
+<Loginscreen>:
+    name: "Login"
+    Label:
+        text: "Login"
+        font_size: 18
+    MDCard:
+        size_hint: None,None
+        size: 300, 500
+        pos_hint: {"center_x":  0.5, "center_y": 0.5}
+        elevation: 10
+        paddding: 25
+        spacing: 25
+        orientation: 'vertical'
+        pos: '100dp','100dp'
+        MDLabel:
+            id: lognin_lable
+            text: 'Login Exam Hall'
+            icon: "user-circle-outline"
+            walign: "center"
+            halign: "center"
+            padding_y: 10
+            font_size: 35
+            size_hint_y: None
+            height: self.texture_size[1]
+        MDTextFieldRound:
+            id: userName
+            hint_text: "Username"
+            icon_right: "account"
+            size_hint_x: None
+            width: 250
+            font_size: 15
+            pos_hint: {"center_x": 0.5}
+        MDTextFieldRound:
+            id: password
+            hint_text: "Password"
+            require: True
+            size_hint_x: None
+            width: 250
+            font_size: 15
+            pos_hint: {"center_x": 0.5}
+            password: True
+        BoxLayout:
+            size_hint: None, None
+            size: 200, 100
+            spacing: 10
+            pos_hint:{"center_x": 0.5}
+            MDRoundFlatButton:
+                id: signin
+                text: "SignIn"
+                width: 200
+                font_size: 12
+                pos_hint: {"center_x": 0.5}
+            MDRoundFlatButton:
+                id: signup
+                text: "SignUp"
+                size_hint_x: None
+                width: 200
+                font_size: 12
+                pos_hint: {"center_x": 0.5}
+                on_release: 
+                    app.root.current = "Register"
+                    root.manager.transition.direction = "left"
+
+        Widget:
+            size_hint_y: None
+            height: 100
+<Regscreen>:
+    name: "Register"
+    Label:
+        text: "Register"
+        font_size: 18
+    MDCard:
+        size_hint: None,None
+        size: 300, 500
+        pos_hint: {"center_x":  0.5, "center_y": 0.5}
+        elevation: 10
+        paddding: 25
+        spacing: 25
+        orientation: 'vertical'
+        pos: '100dp','100dp'
+        MDLabel:
+            id: lognin_lable
+            text: 'Register'
+            icon: "user-circle-outline"
+            walign: "center"
+            halign: "center"
+            padding_y: 10
+            font_size: 35
+            size_hint_y: None
+            height: self.texture_size[1]
+        MDTextFieldRound:
+            id: email
+            hint_text: "Email"
+            icon_right: "email"
+            size_hint_x: None
+            width: 250
+            font_size: 15
+            pos_hint: {"center_x": 0.5}
+        MDTextFieldRound:
+            id: userName
+            hint_text: "Username"
+            icon_right: "account"
+            size_hint_x: None
+            width: 250
+            font_size: 15
+            pos_hint: {"center_x": 0.5}
+        MDTextFieldRound:
+            id: password
+            hint_text: "Password"
+            icon_right: "eye-off"
+            require: True
+            size_hint_x: None
+            width: 250
+            font_size: 15
+            pos_hint: {"center_x": 0.5}
+            password: True
+        MDTextFieldRound:
+            id: confirmPassword
+            hint_text: "Confirm Password"
+            icon_right: "eye-off"
+            require: True
+            size_hint_x: None
+            width: 250
+            font_size: 15
+            pos_hint: {"center_x": 0.5}
+            password: True
+        BoxLayout:
+            size_hint: None, None
+            size: 200, 100
+            spacing: 10
+            pos_hint:{"center_x": 0.5}
+            MDRoundFlatButton:
+                id: signin
+                text: "SignIn"
+                width: 200
+                font_size: 12
+                pos_hint: {"center_x": 0.5}
+                on_release: 
+                    app.root.current = "Login"
+                    root.manager.transition.direction = "right"
+            MDRoundFlatButton:
+                id: signup
+                text: "SignUp"
+                size_hint_x: None
+                width: 200
+                font_size: 12
+                pos_hint: {"center_x": 0.5}
+        Widget:
+            size_hint_y: None
+            height: 100   
