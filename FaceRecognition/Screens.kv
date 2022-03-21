@@ -1,11 +1,14 @@
+#:kivy 1.0
 WindowManager:
     Loginscreen:
     Regscreen:
+    Examscreen:
 <Loginscreen>:
     name: "Login"
-    Label:
-        text: "Login"
-        font_size: 18
+    MDLabel:
+        text: "ALX"
+        font_size: 90
+        pos: '20dp', '30dp'
     MDCard:
         size_hint: None,None
         size: 300, 500
@@ -36,6 +39,7 @@ WindowManager:
         MDTextFieldRound:
             id: password
             hint_text: "Password"
+            icon_right: "eye-off"
             require: True
             size_hint_x: None
             width: 250
@@ -53,6 +57,8 @@ WindowManager:
                 width: 200
                 font_size: 12
                 pos_hint: {"center_x": 0.5}
+                on_release: 
+                    app.root.current = "Exam"
             MDRoundFlatButton:
                 id: signup
                 text: "SignUp"
@@ -60,7 +66,7 @@ WindowManager:
                 width: 200
                 font_size: 12
                 pos_hint: {"center_x": 0.5}
-                on_release: 
+                on_release:
                     app.root.current = "Register"
                     root.manager.transition.direction = "left"
 
@@ -138,7 +144,7 @@ WindowManager:
                 width: 200
                 font_size: 12
                 pos_hint: {"center_x": 0.5}
-                on_release: 
+                on_release:
                     app.root.current = "Login"
                     root.manager.transition.direction = "right"
             MDRoundFlatButton:
@@ -150,4 +156,16 @@ WindowManager:
                 pos_hint: {"center_x": 0.5}
         Widget:
             size_hint_y: None
-            height: 100   
+            height: 100
+<Examscreen>:
+    name: "Exam"
+    MDLabel:
+        text:'Welcome!\n Do not out from the screen and also make sure your camera is on?\n'
+        text:'If you have not camera on your pc connect your phone by usb cable by installing app for both your device'
+        font_size: 18
+        halign: "center"
+    MDRaisedButton:
+        text: "Start"
+        pos: '320dp','200dp'
+        on_release: 
+            root.examcaller()
