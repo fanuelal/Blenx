@@ -49,11 +49,11 @@ This project is the Simple Demo of Examination for __ALX software Engineering pr
 
 # Usage
 > Step 1: clone the repository (you need to have git installed on your machine first)
-### git clone https://github.com/fanuelal/Blenx.git
+##### git clone https://github.com/fanuelal/Blenx.git
 > Step 2: Change the dir to the _Blenx/FaceRecognition_
-### cd Blenx/FaceRecognition
+##### cd Blenx/FaceRecognition
 > Step 3: Run the file
-### python Blenx_GUI.py 
+##### python Blenx_GUI.py 
 > Step 4: The GUI will guide you 
 
 # Installation
