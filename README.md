@@ -9,6 +9,8 @@
 - Contributing
 - Related projects
 - Licensing
+- Abou Developer
+- Landing page
 # What inspired me?
 This project inspired me by its ability to solve problems in my local.So I am happy to do tasks to solve problems.
 And also want to work on **AI** So started with this face recognition system.
@@ -46,15 +48,53 @@ This project is the Simple Demo of Examination for __ALX software Engineering pr
   - _train.py_ -> It will train the AI using the data stored (captured by dataset)
   - _haarcascade_frontalface_default.xml_ -> the frontal face classifire
 
+# Installation
+## Prerequests 
+> Download the get-pip.py file and store it in the same directory as python is installed
+> Install pip
+##### python get-pip.py 
+> Install opencv
+##### pip install opencv-python
+##### pip install opencv-python-headless
+> Install kivy and KivyMD
+##### pip install kivy 
+##### pip install kivymd
+> Install Numpy
+##### pip install numpy
 
 # Usage
 > Step 1: clone the repository (you need to have git installed on your machine first)
 ##### git clone https://github.com/fanuelal/Blenx.git
 > Step 2: Change the dir to the _Blenx/FaceRecognition_
 ##### cd Blenx/FaceRecognition
-> Step 3: Run the file
-##### python Blenx_GUI.py 
-> Step 4: The GUI will guide you 
 
-# Installation
+> Step 3: Run the file
+##### python Blenx_GUI.py
+
+> Step 4: Run the dataset python file
+##### python dataset.py
+> Step 5: Train your face for the system
+##### python train.py
+> Step 6: Run the Detector
+##### python detector.py
+
+> Step 7: The GUI will guide you 
+##### python Blenx_GUI.py
+
+# Contributing
+
+> I am the fullstack developer of this project And also I have done this project alone.
+
+# Related projects
+
+I have also designed E-commersing website  for implmenting by my self [visit]()
+
+# Licensing
+
  
+ # Abou Developer
+ - I'm a Software Engineer with bachelor degree and also software engineering student at ALX SE program.
+ - I have been studying low-level programming, high-level programming, system engineering and devops, and web stack programming (Front-end & Back-end) using a methodology based on peer-learning and projects.
+ - I'm  adaptable, a fast learner, love developing my skills and also love problem solving.
+ 
+
