@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import os
 from PIL import Image
+import json
 #imports
 #basic variables initializations that we use for detection 
 fd=cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
@@ -19,7 +20,7 @@ while (True):
     ret,img=cam.read()
     gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     #converted to gray scale image
-    faces = fd.detectMultiScale(gray,1.3,5)
+    faces = fd.detectMultiScale(gray,1.3,minNeighbors=4, minSize=(30, 0),flags=cv2.CASCADE_SCALE_IMAGE)
     for(x,y,w,h) in faces:
         #loop for creating the box around the face
         name='unkown'
@@ -31,18 +32,25 @@ while (True):
         Ids,conf=recognizer.predict(gray[y:y+h,x:x+w])
         #print(conf)
         #checks if the face is similar or not
-        if conf<55:
+        with open("list.json", 'r') as readen:
+            name_json = json.load(readen)
+
+        if str(Ids) == name_json['id']:
+            owner = name_json['name']
+        if conf< 56:
             #IDs,faces=getImagesWithId(path)
-            print(Ids)
+            print(conf)
             rectcolor = (0,255,0)
-            name = 'Fanuel' 
+            name = owner
         else:
-            name = 'unknown'
+            name = 'Unknown'
+            Ids = ''
+            print(conf)
         #draws rectangle for each images
         cv2.rectangle(img,(x,y),(x+w,y+h),rectcolor,1)
         cv2.rectangle(img, (x,(y+h)+35),(x+w,y+h),rectcolor,cv2.FILLED)
-        cv2.putText(img,name.upper(),(locx,locy),fontFace,fontScale,fontColor,2)
-    cv2.imshow("AI Blen",img)
+        cv2.putText(img,name.upper() + ' ',(locx,locy),fontFace,fontScale,fontColor,2)
+    cv2.imshow("BlenX",img)
     if(cv2.waitKey(1)==ord('q')):
         #the program quit for pressing the q button
                 break
