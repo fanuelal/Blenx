@@ -89,12 +89,11 @@ This project is the Simple Demo of Examination for __ALX software Engineering pr
 
 I have also designed E-commersing website  for implmenting by my self [visit]()
 
-# Licensing
-
+# Landing page
+> [Here is the link](https://fanuelal.github.io/Blenx/)
  
  # Abou Developer
  - I'm a Software Engineer with bachelor degree and also software engineering student at ALX SE program.
  - I have been studying low-level programming, high-level programming, system engineering and devops, and web stack programming (Front-end & Back-end) using a methodology based on peer-learning and projects.
  - I'm  adaptable, a fast learner, love developing my skills and also love problem solving.
  
-
