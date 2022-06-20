@@ -2,13 +2,19 @@
 import cv2
 import numpy as np
 import json
-
+import subprocess
 #attendance writer
 def writingOnFile(ids,name):
     dict={'name':name, 'id':ids}
     json_dict = json.dumps(dict, indent=4)
-    with open("list.json","a") as ofile:
-        ofile.write(json_dict)
+    with open("list.json","r") as ofile:
+        readenFile = json.load(ofile)
+    readenFile.append(dict)
+    with open("list.json","r") as ofile:
+        readenFile = json.load(ofile)
+    readenFile.append(dict)
+    with open("list.json","w") as filewriter:
+        json.dump(readenFile, filewriter, indent=4)
     dataList.write(customer_name+","+id)
     dataList.close()
 #attendance checker 
@@ -38,9 +44,10 @@ while(True):
     cv2.imshow("Trying to recognized you",img)
     #convert the image from bgr ti gray
     gray=cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    faces=fd.detectMultiScale(gray,1.3,minNeighbors=4, minSize=(30, 0),flags=cv2.CASCADE_SCALE_IMAGE)
+    faces=fd.detectMultiScale(gray,1.25,minNeighbors=4, minSize=(40, 40),flags=cv2.CASCADE_SCALE_IMAGE)
     #face cordinate extraction
     for(x,y,w,h) in faces:
+        print('w: '+str(w)+' h:'+str(h))
         sample_counter += 1
         cv2.imwrite("data/"+str(customer_name)+"_"+str(id)+"_"+str(sample_counter)+".jpg",gray[y:y+h, x:x+w])
         print("file have been righten")
@@ -56,6 +63,11 @@ while(True):
     elif(cv2.waitKey(1)==ord('q')):
         break
 writingOnFile(id,customer_name)
-print("finished learning")
+print("finished capturing")
+cmdtrainer = 'python train.py'
+cmddetector = 'python detector.py'
+trainer = subprocess.Popen(cmdtrainer, shell=True)
+checking = input('Are you ready to check: ')
+detect = subprocess.Popen(cmddetector, shell=True)
 cam.release()
-cv2.destroyAllWindows()
+cv2.destroyAllWindows() 

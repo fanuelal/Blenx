@@ -18,9 +18,12 @@ def getImagesWithId(path):
         IDs.append(ID)
         cv2.imshow("I am teaching my self",faceNp)
         cv2.waitKey(10)
-    return IDs,faces
+    return IDs,faces,Names
 
-IDs,faces=getImagesWithId(path)
+IDs,faces,Names=getImagesWithId(path)
 recognizer.train(faces,np.array(IDs))
 recognizer.save('recognized/trainningData.yml')
+exit()
+#os.cd(path)
+#os.del(*.*)
 cv2.destroyAllWindows()

@@ -1,0 +1,20 @@
+#:kivy 1.0
+MDBoxLayout:
+    size: '30dp','30dp'
+    name: "Exam"
+    MDLabel:
+        text:'What is an API stand for?\n'
+        font_size: 18
+        halign: "center"
+    FloatLayout:
+        MDCheckbox:
+           # size_hint: 'None', 'None'
+            size: "48dp", "48dp"
+            pos_hint: {'center_x': .5, 'center_y': .5}
+
+
+    MDRaisedButton:
+        text: "Submit"
+        pos: '320dp','200dp'
+        on_release: 
+            root.examcaller()

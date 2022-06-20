@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./FaceRecognition/KivyMD",
+        "./FaceRecognition/KivyMD/build/lib"
+    ]
+}

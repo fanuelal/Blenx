@@ -3,7 +3,9 @@ import numpy as np
 import os
 from PIL import Image
 import json
-#imports
+#imported packages
+
+
 #basic variables initializations that we use for detection 
 fd=cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 cam=cv2.VideoCapture(0)
@@ -19,11 +21,11 @@ Ids=0
 while (True):
     ret,img=cam.read()
     gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    
     #converted to gray scale image
-    faces = fd.detectMultiScale(gray,1.3,minNeighbors=4, minSize=(30, 0),flags=cv2.CASCADE_SCALE_IMAGE)
+    faces = fd.detectMultiScale(gray,1.4,minNeighbors=4, minSize=(40, 40),flags=cv2.CASCADE_SCALE_IMAGE)
     for(x,y,w,h) in faces:
         #loop for creating the box around the face
-        name='unkown'
         rectcolor = (0,0,255)
         #initialize the rectangle color
         fontColor = (255, 255, 255)
@@ -31,25 +33,26 @@ while (True):
         locx = (x+50)
         Ids,conf=recognizer.predict(gray[y:y+h,x:x+w])
         #print(conf)
+        owner = 'Unknown'
         #checks if the face is similar or not
         with open("list.json", 'r') as readen:
             name_json = json.load(readen)
-
-        if str(Ids) == name_json['id']:
-            owner = name_json['name']
-        if conf< 56:
+        for value in name_json:
+            if str(Ids) == value['id']:
+                owner = value['name']
+        if conf < 67:
             #IDs,faces=getImagesWithId(path)
             print(conf)
             rectcolor = (0,255,0)
             name = owner
         else:
-            name = 'Unknown'
+            name='unkown'
             Ids = ''
             print(conf)
         #draws rectangle for each images
         cv2.rectangle(img,(x,y),(x+w,y+h),rectcolor,1)
         cv2.rectangle(img, (x,(y+h)+35),(x+w,y+h),rectcolor,cv2.FILLED)
-        cv2.putText(img,name.upper() + ' ',(locx,locy),fontFace,fontScale,fontColor,2)
+        cv2.putText(img,name.upper(),(locx,locy),fontFace,fontScale,fontColor,2)
     cv2.imshow("BlenX",img)
     if(cv2.waitKey(1)==ord('q')):
         #the program quit for pressing the q button

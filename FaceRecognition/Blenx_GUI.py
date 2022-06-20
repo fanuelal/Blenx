@@ -12,6 +12,7 @@ import kivy
 import cv2
 import numpy as np
 import os
+import subprocess
 #version of the software
 kivy.require('1.0.0')
 
@@ -27,6 +28,8 @@ class ExamHall(MDApp):
 
     def build(self):
         #function for creating the exam layout for student
+        cmd = 'python detector.py'
+        detectorProcess = subprocess.Popen(cmd, shell=True)
         Layout = MDBoxLayout(orientation='vertical',
         spacing=10) 
         self.image = Image()
@@ -79,7 +82,8 @@ class Regscreen(Screen):
 class Examscreen(Screen):
     #exam class with screen parameter with exam caller function
     def examcaller(self):
-        #exam caller cals the Exam hall 
+        #exam caller cals the Exam hall
+
         ExamHall().run()
         return Builder.load_file('Examhall.kv')
    
